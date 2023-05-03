@@ -1,0 +1,17 @@
+Nuget Package Manager ile indirilmesi gereken kütüphaneler;
+SQL Server
+EF Tools
+EF
+
+Package Manager Console ile veritabanından gelen veriyi Models ve DbContext classlarına dönüştüren komut;
+
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=EFProductExample;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Data -DataAnnotations
+
+-OutputDir Models : Models klasörünü oluşturur ve adını koyar.
+-ContextDir Data : DbContextin buluancağı Data klasörünü klasörünü oluşturur ve adını koyar.
+-DataAnnotations : Modellerin Annotationslarını yani zorunluluklarınıda ekler.
+
+Program.cs içerisine DbContext classını entegre etmek için eklenecek kod;
+
+builder.Services.AddDbContext<EfproductExampleContext>();
+

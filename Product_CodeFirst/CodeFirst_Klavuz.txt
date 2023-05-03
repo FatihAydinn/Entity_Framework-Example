@@ -1,0 +1,26 @@
+Nuget Package Manager ile indirilmesi gereken eklentiler;
+-Entity Framework Design
+-E.F Tools
+-SqlServer
+
+
+Models içerisine Product isimli bir class oluşturulur.
+-Bu class oluşacak veritabanının sütunlarını içerir.
+
+Data adında klasör oluştur ve içerisine DbContext classını oluştur.
+
+Program.cs eklenecek kodlar;
+builder.Services.AddDbContext<ProductDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductDBContext") ?? throw new InvalidOperationException("Connection string 'ProductDBContext' not found.")));
+
+appsettings.js eklenecek kodlar;
+  "ConnectionStrings": {
+    "ProductDBContext": "Server=(localdb)\\mssqllocaldb;Database=EFProductExample;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+
+
+ProductController adında controller oluştur.
+
+Tools > Package Manager Console > add-migration > update-database
+işlemi ile veritabanı oluştur.
+
